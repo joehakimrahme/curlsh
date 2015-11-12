@@ -1,0 +1,1 @@
+from curlsh import app as application
