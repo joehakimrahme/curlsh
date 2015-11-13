@@ -2,7 +2,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/install.sh")
 def hello():
     ua = request.headers.get('User-Agent')
 
