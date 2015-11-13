@@ -4,3 +4,5 @@ content at the same address depending on the client's user agent.
 In short:
 
     Don't do `curl http://stuff | sh`, even if you've "inspected" the code first.
+
+In less short: http://rahme.info/dont-curl-sh
