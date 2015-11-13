@@ -18,13 +18,13 @@ def nothing():
 
 @app.route("/dont-curl-sh")
 def dont_curl_sh():
-    with open("dontcurlsh.md") as article:
+    with open("/var/www/curlsh/dontcurlsh.md") as article:
         text = """<!DOCTYPE html>
 <html>
 <title>Hello Strapdown</title>
 
 <xmp theme="united" style="display:none;">"""
-        text += article.read()
+        text += "".join(article.read())
         text += """</xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
