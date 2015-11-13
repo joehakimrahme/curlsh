@@ -21,7 +21,7 @@ Download the file locally. Read it. Run it maybe.
 
 
 
-I also want to mention [this website] that catalogs all the projects that
+I also want to mention [this website][2] that catalogs all the projects that
 promote this practice in their installation instructions.
 
 [1]: https://github.com/joehakimrahme/curlsh/blob/master/curlsh.py#L7
