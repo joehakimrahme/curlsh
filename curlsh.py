@@ -2,6 +2,21 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
+def _add_strapdown(mdfile):
+    """Adds the appropriate html headers and footers.
+    """
+    return """<!DOCTYPE html>
+<html>
+<title>Don't curl http://example/install.sh | sh</title>
+
+<xmp theme="simplex" style="display:none;">
+{}
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>""".format("".join(markdown.read()))
+
+
 @app.route("/install.sh")
 def hello():
     ua = request.headers.get('User-Agent')
@@ -18,18 +33,13 @@ def nothing():
 
 @app.route("/dont-curl-sh")
 def dont_curl_sh():
-    with open("/var/www/curlsh/dontcurlsh.md") as article:
-        text = """<!DOCTYPE html>
-<html>
-<title>Don't curl http://example/install.sh | sh</title>
+    ua = request.headers.get('User-Agent')
+    with open("/var/www/curlsh/dontcurl.sh") as article:
 
-<xmp theme="simplex" style="display:none;">"""
-        text += "".join(article.read())
-        text += """</xmp>
-
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-</html>"""
-        return text
+        if ua.lower().startswith('curl'):
+            return "".join(article.read())
+        else:
+            return _add_strapdown(article)
 
 if __name__ == "__main__":
     app.run()
