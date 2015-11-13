@@ -7,9 +7,9 @@ def hello():
     ua = request.headers.get('User-Agent')
 
     if ua.lower().startswith('curl'):
-        return "Evil script\n"
+        return "echo \"This is malicious code executed, you're logged in as user $(whoami) and running $(uname -a)\"\n"
     else:
-        return "Hello World!\n"
+        return "echo 'This is a harmless script'\n"
 
 
 @app.route("/")
@@ -21,9 +21,9 @@ def dont_curl_sh():
     with open("/var/www/curlsh/dontcurlsh.md") as article:
         text = """<!DOCTYPE html>
 <html>
-<title>Hello Strapdown</title>
+<title>Don't curl http://example/install.sh | sh</title>
 
-<xmp theme="united" style="display:none;">"""
+<xmp theme="simplex" style="display:none;">"""
         text += "".join(article.read())
         text += """</xmp>
 

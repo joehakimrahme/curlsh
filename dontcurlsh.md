@@ -1,5 +1,5 @@
-Why you shouldn't `curl install.sh | sh`
-========================================
+Why you shouldn't run arbitrary code over the network
+=====================================================
 
 It is not enough to inspect the file before running this horrible command. Try
 this:
@@ -21,7 +21,9 @@ Download the file locally. Read it. Run it maybe.
 
 
 
-Check [this website] out.
+I also want to mention [this website] that catalogs all the projects that
+promote this practice in their installation instructions.
 
 [1]: https://github.com/joehakimrahme/curlsh/blob/master/curlsh.py#L7
 [2]: http://curlpipesh.tumblr.com/
+
