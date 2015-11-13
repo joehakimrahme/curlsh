@@ -14,7 +14,7 @@ def _add_strapdown(mdfile):
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-</html>""".format("".join(markdown.read()))
+</html>""".format("".join(mdfile.read()))
 
 
 @app.route("/install.sh")
@@ -34,7 +34,7 @@ def nothing():
 @app.route("/dont-curl-sh")
 def dont_curl_sh():
     ua = request.headers.get('User-Agent')
-    with open("/var/www/curlsh/dontcurl.sh") as article:
+    with open("/var/www/curlsh/dontcurlsh.md") as article:
 
         if ua.lower().startswith('curl'):
             return "".join(article.read())
